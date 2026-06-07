@@ -111,6 +111,12 @@ const Navbar = () => {
                                     >
                                         About
                                     </p>
+                                    <p
+    onClick={() => navigate('/safety')}
+    className="px-3 py-2 mx-2 mt-2 cursor-pointer text-red-600 font-semibold transition-colors duration-500 transform rounded-md lg:mt-0 hover:drop-shadow-2xl hover:bg-red-600 hover:text-white"
+>
+    🛡️ Safety
+</p>
                                 </div>
 
                                 <div className="flex items-center mt-4 lg:mt-0">

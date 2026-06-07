@@ -30,6 +30,10 @@ import AdminUsers from "./pages/admin/adminUsers/AdminUsers";
 import AdminUserDetails from "./pages/admin/adminUsers/AdminUserDetails";
 import About from "./components/user/Home/About";
 
+
+import SafetyHub from "./pages/user/Safety/SafetyHub";
+import AdminSafetyPanel from "./components/admin/SafetyData/AdminSafetyPanel";
+
 function App() {
     const user = useSelector((store: any) => store.user.loggedIn)
     const driver = useSelector((store: any) => store.driver.loggedIn)
@@ -53,6 +57,7 @@ function App() {
                         <Route path="/about" element={<About />} />
                         <Route path="/account" element={!user ? <Navigate to={'/login'} /> : <Profilepage />} />
                         <Route path="/rides" element={!user ? <Navigate to={'/login'} /> : <UserCurrentRidePage />} />
+                        <Route path="/safety" element={!user ? <Navigate to={'/login'} /> : <SafetyHub />} />
 
                         {/* Driver Routes */}
 
@@ -73,6 +78,7 @@ function App() {
                         <Route path="/admin/verifiedDriver/:id" element={!admin ? <Navigate to={'/admin/login'} /> : <AdminDriverDetailsVerified />} />
                         <Route path="/admin/users" element={!admin ? <Navigate to={'/admin/login'} /> : <AdminUsers />} />
                         <Route path="/admin/userDetails/:id" element={!admin ? <Navigate to={'/admin/login'} /> : <AdminUserDetails />} />
+                        <Route path="/admin/safety" element={!admin ? <Navigate to={'/admin/login'} /> : <AdminSafetyPanel />} />
                     </Routes>
                 </BrowserRouter>
             </ChakraProvider>

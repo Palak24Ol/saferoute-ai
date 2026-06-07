@@ -23,6 +23,7 @@ export function AdminNavbar() {
                     <li className="cursor-pointer hover:text-yellow-300" onClick={() => navigate("/admin/dashboard")}>Dashboard</li>
                     <li className="cursor-pointer hover:text-yellow-300" onClick={() => navigate("/admin/drivers")}>Drivers</li>
                     <li className="cursor-pointer hover:text-yellow-300" onClick={() => navigate("/admin/users")}>Users</li>
+                    <li className="cursor-pointer hover:text-yellow-300" onClick={() => navigate("/admin/safety")}>Safety</li>
                 </ul>
 
                 <button

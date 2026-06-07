@@ -1,4 +1,9 @@
+
+import safetyReducer from "./slices/safetySlice";
+
+
 import { configureStore } from "@reduxjs/toolkit";
+
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
@@ -31,7 +36,8 @@ export const store = configureStore({
         rejectedModal: rejectedModalSlice,
         userRideData: userRideDataSlice,
         driverRideData:driverRideDataSlice,
-        driverSearch : driverSearchSlice
+        driverSearch : driverSearchSlice,
+        safety: safetyReducer,
     },
     middleware: (getDefaultMiddleware) => {
         const middleware = getDefaultMiddleware({
