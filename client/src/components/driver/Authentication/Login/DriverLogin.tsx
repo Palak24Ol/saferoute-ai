@@ -84,18 +84,20 @@ function DriverLogin() {
     // OTP-function
 
     const onCaptchaVerify = (auth: Auth) => {
-        if (!window.recaptchaVerifier) {
-            window.recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
-                size: "invisible",
-                callback: () => {
-                    toast.success("Otp sent successfully");
-                    setotpInput(true);
-                },
-                "expired-callback": () => {
-                    toast.error("TimeOut");
-                },
-            });
+        if (window.recaptchaVerifier) {
+            window.recaptchaVerifier.clear();
+            window.recaptchaVerifier = undefined;
         }
+        window.recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
+            size: "invisible",
+            callback: () => {
+                toast.success("Otp sent successfully");
+                setotpInput(true);
+            },
+            "expired-callback": () => {
+                toast.error("TimeOut");
+            },
+        });
     };
 
     const sendOtp = async () => {

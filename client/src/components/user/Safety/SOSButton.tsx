@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import createAxiosUser from "../../../services/axios/axiosUser";
@@ -8,10 +8,27 @@ const SOSButton: React.FC = () => {
     const [progress, setProgress] = useState(0);
     const [triggered, setTriggered] = useState(false);
     const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+    const holdingRef = useRef(false);
     const userToken = useSelector((store: any) => store.user.userToken);
     const axiosUser = createAxiosUser(userToken);
 
-    const startHold = () => {
+    // Global release listener — fires even if mouse leaves button while holding
+    useEffect(() => {
+        const handleRelease = () => {
+            if (holdingRef.current) stopHold();
+        };
+        window.addEventListener("mouseup", handleRelease);
+        window.addEventListener("touchend", handleRelease);
+        return () => {
+            window.removeEventListener("mouseup", handleRelease);
+            window.removeEventListener("touchend", handleRelease);
+        };
+    }, []);
+
+    const startHold = (e: React.MouseEvent | React.TouchEvent) => {
+        e.preventDefault();
+        if (triggered || holdingRef.current) return;
+        holdingRef.current = true;
         setHolding(true);
         setProgress(0);
         let p = 0;
@@ -27,6 +44,7 @@ const SOSButton: React.FC = () => {
 
     const stopHold = () => {
         if (intervalRef.current) clearInterval(intervalRef.current);
+        holdingRef.current = false;
         if (!triggered) {
             setHolding(false);
             setProgress(0);
@@ -36,6 +54,7 @@ const SOSButton: React.FC = () => {
     const triggerSOS = () => {
         setTriggered(true);
         setHolding(false);
+        holdingRef.current = false;
 
         navigator.geolocation.getCurrentPosition(
             async (pos) => {
@@ -67,36 +86,51 @@ const SOSButton: React.FC = () => {
         );
     };
 
+    const circumference = 2 * Math.PI * 28;
+
     return (
-        <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-1">
+        <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-1 select-none">
             <p className="text-xs text-gray-500 font-medium">
                 {holding ? "Keep holding..." : triggered ? "Sending..." : "Hold for SOS"}
             </p>
-            <div className="relative">
-                {/* Progress ring */}
-                <svg className="absolute inset-0 w-16 h-16 -rotate-90" viewBox="0 0 64 64">
-                    <circle cx="32" cy="32" r="28" fill="none" stroke="#fee2e2" strokeWidth="4" />
+
+            {/* Wrapper handles ALL mouse/touch events — SVG is pointer-events-none */}
+            <div
+                className="relative w-16 h-16 cursor-pointer"
+                onMouseDown={startHold}
+                onTouchStart={startHold}
+            >
+                {/* SVG ring — pointer-events-none so it never blocks clicks */}
+                <svg
+                    className="absolute inset-0 w-16 h-16 -rotate-90 pointer-events-none"
+                    viewBox="0 0 64 64"
+                >
+                    <circle
+                        cx="32" cy="32" r="28"
+                        fill="none" stroke="#fee2e2" strokeWidth="4"
+                    />
                     <circle
                         cx="32" cy="32" r="28"
                         fill="none"
                         stroke="#dc2626"
                         strokeWidth="4"
-                        strokeDasharray={`${2 * Math.PI * 28}`}
-                        strokeDashoffset={`${2 * Math.PI * 28 * (1 - progress / 100)}`}
+                        strokeDasharray={circumference}
+                        strokeDashoffset={circumference * (1 - progress / 100)}
                         strokeLinecap="round"
                         style={{ transition: "stroke-dashoffset 0.1s linear" }}
                     />
                 </svg>
+
+                {/* Button — no onMouseLeave, no onMouseUp, handled globally */}
                 <button
-                    onMouseDown={startHold}
-                    onMouseUp={stopHold}
-                    onMouseLeave={stopHold}
-                    onTouchStart={startHold}
-                    onTouchEnd={stopHold}
                     disabled={triggered}
-                    className={`w-16 h-16 rounded-full font-bold text-white text-xs shadow-lg transition-transform select-none
-                        ${triggered ? "bg-orange-500 scale-95" : holding ? "bg-red-700 scale-95" : "bg-red-600 hover:bg-red-700 active:scale-95"}
-                    `}
+                    className={`absolute inset-0 w-16 h-16 rounded-full font-bold text-white text-xs shadow-lg transition-all
+                        ${triggered
+                            ? "bg-orange-500 scale-95"
+                            : holding
+                            ? "bg-red-700 scale-95 shadow-red-300 shadow-xl"
+                            : "bg-red-600 hover:bg-red-700"
+                        }`}
                 >
                     {triggered ? "..." : "SOS"}
                 </button>

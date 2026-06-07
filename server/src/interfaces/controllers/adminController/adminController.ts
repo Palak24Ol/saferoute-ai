@@ -80,7 +80,7 @@ export default {
     },
 
     verifiedDrivers: async (req: Request, res: Response) => {
-        const verifiedDrivers = await driver.find({ account_status: { $nin: ["Pending", "Rejected", "Blocked"] } });
+        const verifiedDrivers = await driver.find({ account_status: "Good" });
         res.json(verifiedDrivers);
     },
 

@@ -29,9 +29,9 @@ const DriverFeedbacks = () => {
         <>
             <div className='bg-gray-100 w-[96%] mx-auto h-fit py-5 rounded-2xl drop-shadow-2xl md:flex items-center px-5'>
                 <div className='w-full md:h-fit h-fit md:grid grid-cols-3 gap-4'>
-                    {feedbacks.map((feedbacks: any) => {
+                    {feedbacks.map((feedbacks: any, index: number) => {
                         return (
-                            <div className="card bg-base-100 shadow-xl">
+                            <div key={feedbacks._id || index} className="card bg-base-100 shadow-xl">
                                 <div className="card-body">
                                     <h2 className="card-title">"{feedbacks.feedback}"</h2>
                                     <div className="card-actions mt-1 ml-2">

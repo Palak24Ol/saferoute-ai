@@ -87,18 +87,22 @@ function Login() {
     // OTP-function
 
     const onCaptchaVerify = (auth: Auth) => {
-        if (!window.recaptchaVerifier) {
-            window.recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
-                size: "invisible",
-                callback: () => {
-                    toast.success("Otp sent successfully");
-                    setotpInput(true);
-                },
-                "expired-callback": () => {
-                    toast.error("TimeOut");
-                },
-            });
+        // Always clear existing verifier — React re-renders destroy the DOM
+        // element but leave the stale JS reference, causing "element removed" error
+        if (window.recaptchaVerifier) {
+            window.recaptchaVerifier.clear();
+            window.recaptchaVerifier = undefined;
         }
+        window.recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
+            size: "invisible",
+            callback: () => {
+                toast.success("Otp sent successfully");
+                setotpInput(true);
+            },
+            "expired-callback": () => {
+                toast.error("TimeOut");
+            },
+        });
     };
 
     const sendOtp = async () => {
