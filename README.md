@@ -1,6 +1,6 @@
-# SafeRoute AI
+# StreePath
 
-A women-safety-first cab booking and ride-hailing platform. SafeRoute AI combines real-time ride matching with a dedicated safety layer — SOS alerts, emergency contacts, incident reporting, and a route danger score — all in one app.
+A women-safety-first cab booking and ride-hailing platform.  StreePath combines real-time ride matching with a dedicated safety layer — SOS alerts, emergency contacts, incident reporting, and a route danger score — all in one app.
 
 ---
 
@@ -22,9 +22,9 @@ A women-safety-first cab booking and ride-hailing platform. SafeRoute AI combine
 
 ## Overview
 
-SafeRoute AI is a full-stack monorepo with a **React + TypeScript** frontend (`/client`) and a **Node.js + Express + TypeScript** backend (`/server`). Three distinct portals are served from the same frontend: **User**, **Driver**, and **Admin**.
+ StreePath is a full-stack monorepo with a **React + TypeScript** frontend (`/client`) and a **Node.js + Express + TypeScript** backend (`/server`). Three distinct portals are served from the same frontend: **User**, **Driver**, and **Admin**.
 
-The platform's defining feature is its **SafeRoute AI safety layer** — a set of endpoints and UI components that sit on top of the core ride-booking flow and let users trigger SOS alerts, manage trusted emergency contacts, report incidents with GPS coordinates, and check a danger score for any route before they travel.
+The platform's defining feature is its ** StreePath safety layer** — a set of endpoints and UI components that sit on top of the core ride-booking flow and let users trigger SOS alerts, manage trusted emergency contacts, report incidents with GPS coordinates, and check a danger score for any route before they travel.
 
 ---
 
