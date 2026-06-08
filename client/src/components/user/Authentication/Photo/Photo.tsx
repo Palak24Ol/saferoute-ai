@@ -1,6 +1,3 @@
-// src/components/user/Authentication/Photo/Photo.tsx
-// Full pink-theme redesign — all existing logic preserved exactly
-
 import { useRef, useCallback, useState } from "react";
 import Webcam from "react-webcam";
 import { useFormik } from "formik";

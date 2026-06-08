@@ -6,7 +6,7 @@ const HeroSection = () => {
     return (
         <section
             style={{
-                backgroundImage: "url('/images/image.png')",
+                backgroundImage: "url('/images/woman.png')",
                 backgroundSize: "cover",
                 backgroundPosition: "center center",
                 backgroundRepeat: "no-repeat",
