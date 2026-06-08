@@ -47,10 +47,7 @@ const Footer = () => {
                     </a>
                 </div>
 
-                {/* Copyright */}
-                <p className="text-sm text-white/40">
-                    © 2024 Safely. All rights reserved.
-                </p>
+                
             </div>
         </footer>
     );

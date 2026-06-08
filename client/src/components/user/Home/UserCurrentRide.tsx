@@ -476,7 +476,7 @@ const UserCurrentRide = () => {
               Canceling after the driver is en route may inconvenience them and affect your account standing.
             </div>
             <p style={{ fontSize: 12, color: '#6b7280', marginBottom: 24 }}>
-              Please proceed with caution. Repeated cancellations may impact your Safely account.
+              Please proceed with caution. Repeated cancellations may impact your StreePath account.
             </p>
             <div style={{ display: 'flex', gap: 10, justifyContent: 'flex-end' }}>
               <button className="safely-btn-outline" onClick={() => setcancelModal(false)}>Keep Ride</button>
@@ -495,7 +495,7 @@ const UserCurrentRide = () => {
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e91e8c" strokeWidth="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
               </div>
               <h2 style={{ fontSize: 22, fontWeight: 700, color: '#111827' }}>Destination Reached!</h2>
-              <p style={{ color: '#6b7280', fontSize: 13, marginTop: 6 }}>Thank you for choosing Safely. Please complete payment.</p>
+              <p style={{ color: '#6b7280', fontSize: 13, marginTop: 6 }}>Thank you for choosing StreePath. Please complete payment.</p>
               <div style={{ marginTop: 16, display: 'flex', gap: 8, justifyContent: 'center', alignItems: 'center' }}>
                 <span style={{ fontSize: 15, color: '#374151' }}>Fare charge</span>
                 <span style={{ fontSize: 24, fontWeight: 800, color: '#e91e8c' }}>₹{rideData?.price}</span>
@@ -507,7 +507,7 @@ const UserCurrentRide = () => {
               <Accordion open={open === 1}>
                 <div style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', padding: '10px 0', borderBottom: '1px solid #f3f4f6' }} onClick={() => handleOpen(1)}>
                   <Radio onChange={formik.handleChange} value="Wallet" name="paymentMode" color="pink" crossOrigin={undefined} />
-                  <AccordionHeader style={{ fontSize: 14 }}>Safely Wallet</AccordionHeader>
+                  <AccordionHeader style={{ fontSize: 14 }}>StreePath Wallet</AccordionHeader>
                 </div>
                 <AccordionBody>
                   <div style={{ paddingLeft: 40, fontSize: 13, color: '#374151' }}>

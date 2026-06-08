@@ -57,12 +57,12 @@ export default {
             if (response?.email) {
                 const subject = "Account Verified Successfully";
                 const text = `Hello ${response.name}, 
-                Thank you for registering with safely! We're excited to have you on board. Your account has been successfully verified.
+                Thank you for registering with StreePath! We're excited to have you on board. Your account has been successfully verified.
                 
-                Thank you for choosing Safely. We look forward to serving you and making your journeys safe and convenient.
+                Thank you for choosing StreePath. We look forward to serving you and making your journeys safe and convenient.
                 
                 Best regards,
-                Safely India`;
+                StreePath India`;
 
                 try {
                     await sendMail(response.email, subject, text);
@@ -103,7 +103,7 @@ export default {
             if (response?.email) {
                 const subject = "Account Registration Rejected";
                 const text = `Hello ${response.name}, 
-                We regret to inform you that your registration with Safely has been rejected. We appreciate your interest, 
+                We regret to inform you that your registration with StreePath has been rejected. We appreciate your interest, 
                 but unfortunately, we are unable to accept your application at this time.
                 
                 Reason : ${reason}
@@ -113,7 +113,7 @@ export default {
                 If you have any questions or need further information, please feel free to contact our support team.
                 
                 Sincerely,
-                Safely India`;
+                StreePath India`;
 
                 try {
                     await sendMail(response.email, subject, text);
@@ -153,7 +153,7 @@ export default {
                 const subject = "Account Status Updated";
                 const text = `Hello ${response.name}, 
 
-                We inform you that your Safely account status has been updated.
+                We inform you that your StreePath account status has been updated.
 
                 Status : ${newStatus}
                 Reason : ${reason}
@@ -161,7 +161,7 @@ export default {
                 If you have any questions or need further information, please feel free to contact our support team.
                 
                 Sincerely,
-                Safely India`;
+                StreePath India`;
 
                 try {
                     await sendMail(response.email, subject, text);
@@ -222,12 +222,12 @@ export default {
             if (response?.email) {
                 const subject = "Account Verified Successfully";
                 const text = `Hello ${response.name}, 
-                Thank you for registering with safely! We're excited to have you on board. Your account has been successfully verified.
+                Thank you for registering with StreePath! We're excited to have you on board. Your account has been successfully verified.
                 
-                Thank you for choosing Safely. We look forward to serving you and making your journeys safe and convenient.
+                Thank you for choosing StreePath. We look forward to serving you and making your journeys safe and convenient.
                 
                 Best regards,
-                Safely India`;
+                StreePath India`;
 
                 try {
                     await sendMail(response.email, subject, text);
@@ -263,7 +263,7 @@ export default {
             if (response?.email) {
                 const subject = "Account Registration Rejected";
                 const text = `Hello ${response.name}, 
-                We regret to inform you that your registration with Safely has been rejected. We appreciate your interest, 
+                We regret to inform you that your registration with StreePath has been rejected. We appreciate your interest, 
                 but unfortunately, we are unable to accept your application at this time.
                 
                 Reason : ${reason}
@@ -273,7 +273,7 @@ export default {
                 If you have any questions or need further information, please feel free to contact our support team.
                 
                 Sincerely,
-                Safely India`;
+                StreePath India`;
 
                 try {
                     await sendMail(response.email, subject, text);
@@ -313,7 +313,7 @@ export default {
                 const subject = "Account Status Updated";
                 const text = `Hello ${response.name}, 
 
-                We inform you that your Safely account status has been updated.
+                We inform you that your StreePath account status has been updated.
 
                 Status : ${newStatus}
                 Reason : ${reason}
@@ -321,7 +321,7 @@ export default {
                 If you have any questions or need further information, please feel free to contact our support team.
                 
                 Sincerely,
-                Safely India`;
+                StreePath India`;
 
                 try {
                     await sendMail(response.email, subject, text);

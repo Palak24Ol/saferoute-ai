@@ -55,12 +55,12 @@ const About = () => {
                                 </h1>
 
                                 <p className="max-w-lg mt-6 text-gray-500 dark:text-gray-400 leading-relaxed">
-                                    At Safely, we are committed to providing a safe and reliable cab service exclusively designed for women.
+                                    At StreePath, we are committed to providing a safe and reliable cab service exclusively designed for women.
                                     Our team is dedicated to making your ride experience exceptional, and we are continuously working to improve our services to better serve you.
                                 </p>
 
                                 <p className="max-w-lg mt-6 text-gray-500 dark:text-gray-400 leading-relaxed">
-                                    Thank you for choosing Safely, where your safety is our destination.
+                                    Thank you for choosing StreePath, where your safety is our destination.
                                 </p>
 
                                 {/* Pink divider */}
@@ -72,9 +72,7 @@ const About = () => {
                                 <h3 className="text-lg font-bold" style={{ color: "#c2185b" }}>
                                     Palak Jaiswal
                                 </h3>
-                                <p className="text-gray-600 dark:text-gray-300 mt-1">
-                                    CEO — Safely Pvt Ltd
-                                </p>
+                                 
 
                                 {/* Pink badge */}
                                 <span

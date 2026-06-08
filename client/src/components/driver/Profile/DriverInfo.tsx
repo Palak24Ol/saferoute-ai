@@ -101,7 +101,7 @@ const DriverInfo = () => {
               </h1>
             </div>
             <div className='flex gap-1'>
-              <h1 className='text-sm'>Safely Rating :</h1>
+              <h1 className='text-sm'>StreePath Rating :</h1>
               <h1 className='text-sm'> {driverData?.ratings} ratings</h1>
             </div>
             <div className='flex gap-3 mt-2'>

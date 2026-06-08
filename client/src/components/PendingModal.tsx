@@ -24,7 +24,7 @@ export const PendingModal = () => {
                                 <div className="mt-2 text-center">
 
                                     <h1 className="text-xl font-bold">
-                                        Thank you for registering with safely
+                                        Thank you for registering with StreePath!
                                     </h1>
                                     <h1 className="my-1">Your verification is ongoing!</h1>
 
