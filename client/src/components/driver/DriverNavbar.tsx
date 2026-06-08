@@ -30,12 +30,20 @@ export function DriverNavbar() {
             <div className="max-w-screen-xl mx-auto flex items-center justify-between">
 
                 {/* Logo */}
-                <span
-                    className="text-xl font-bold text-white cursor-pointer tracking-tight select-none"
+                <div
+                    className="flex items-center gap-3 cursor-pointer select-none"
                     onClick={() => navigate("/driver/dashboard")}
                 >
-                    Safely
-                </span>
+                    <img
+                        src="/images/Frame 7.png"
+                        alt="StreePath logo"
+                        className="h-8 w-auto object-contain"
+                        style={{ maxWidth: "110px" }}
+                    />
+                    <span className="text-xl font-bold text-white tracking-tight">
+                        StreePath
+                    </span>
+                </div>
 
                 {/* Desktop nav links */}
                 <ul className="hidden lg:flex items-center gap-1">
