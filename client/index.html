@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <link rel="icon" type="image/svg+xml" href="/images/Frame 7.png" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Safely</title>
-    </head>
-    <body>
-        <div id="root"></div>
-        <script type="module" src="/src/main.tsx"></script>
-        
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/images/Frame 7.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Safely — Women's Safe Ride Platform</title>
+
+    <!-- Poppins from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- SOS pulse animation global CSS -->
+    <style>
+      * { font-family: 'Poppins', sans-serif; }
+      @keyframes sosPulse {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7); }
+        70%       { box-shadow: 0 0 0 16px rgba(255, 71, 87, 0); }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

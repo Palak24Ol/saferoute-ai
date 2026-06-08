@@ -1,32 +1,42 @@
-import ThemeButton from "../../assets/ThemeButton";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
+    const navigate = useNavigate();
+
     return (
-        <>
-            <div className="">
-                <div style={{ height: "65vh" }}>
-                    <div
-                        className="hero h-full"
-                        style={{
-                            backgroundImage: "url(https://res.cloudinary.com/dxz1rikvk/image/upload/v1723115795/safely/eqooypzsixiyaqabhiwt.jpg)",
-                        }}
+        <section
+            style={{
+                backgroundImage: "url('/images/image.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center center",
+                backgroundRepeat: "no-repeat",
+                minHeight: "72vh",
+            }}
+            className="relative w-full flex items-center"
+        >
+             <div className="absolute inset-0 pointer-events-none" style={{ backgroundColor: "rgba(233,30,140,0.25)" }} />
+            <div className="relative z-10 max-w-7xl mx-auto px-8 py-16 w-full">
+                <div className="text-white max-w-lg">
+                    <h1 className="text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                        Your Safe<br />
+                        Journey<br />
+                        Begins Here
+                    </h1>
+                    <p className="text-white/85 text-base font-light mb-10 leading-relaxed">
+                        Reliable, secure, and exclusive transportation for women, by women.
+                        Experience peace of mind with every ride.
+                    </p>
+                    <button
+                        onClick={() => navigate("/rides")}
+                        className="border-2 border-white text-white text-sm font-bold tracking-widest
+                            uppercase px-8 py-3 rounded-lg hover:bg-white hover:text-[#E91E8C]
+                            transition-all duration-200"
                     >
-                        <div className="hero-overlay bg-opacity-60"></div>
-                        <div className="hero-content md:w-full md:justify-start md:pl-3 text-center md:text-left text-white">
-                            <div className="max-w-md">
-                                <h1 className="mb-5 text-5xl font-bold">Your Safe Journey Begins Here</h1>
-                                <p className="mb-5 font-light">
-                                    Safe, Reliable, and Exclusive Cab Service for Women, by Women. Where Safety Meets
-                                    Convenience. Book Your Cab Now!
-                                </p>
-                                {/* <button className="btn bg-blue-800 text-golden">Get Started</button> */}
-                                <ThemeButton text="get assistance" />
-                            </div>
-                        </div>
-                    </div>
+                        BOOK YOUR RIDE
+                    </button>
                 </div>
             </div>
-        </>
+        </section>
     );
 };
 

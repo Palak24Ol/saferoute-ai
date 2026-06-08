@@ -1,52 +1,87 @@
-import SafetyCheckIcon from "@mui/icons-material/SafetyCheck";
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import SupportIcon from '@mui/icons-material/Support';
-
 const cards = [
     {
-        icon: <SafetyCheckIcon fontSize="inherit" />,
         title: "Safety First",
-        desc: "At SafeRoute AI, we prioritize your safety above all else. Our women-only cab booking service is designed to provide you with a secure and comfortable travel experience.",
-        bg: "https://img.freepik.com/free-photo/front-view-female-builder-yellow-helmet-black-shirt-showing-heart-sign-white-wall_140725-35157.jpg?w=1060"
+        desc: "Advanced safety features, real-time tracking, and dedicated support.",
+        icon: (
+            // Shield with heart
+            <svg className="w-10 h-10" viewBox="0 0 48 48" fill="none">
+                <path
+                    d="M24 4L8 10v14c0 9.4 6.8 18.2 16 20 9.2-1.8 16-10.6 16-20V10L24 4z"
+                    stroke="#E91E8C" strokeWidth="2.5" strokeLinejoin="round"
+                    fill="#FFF0F5"
+                />
+                <path
+                    d="M18 24c0-1.65 1.35-3 3-3 .98 0 1.84.47 2.38 1.2.54-.73 1.4-1.2 2.38-1.2 1.65 0 3 1.35 3 3 0 2.5-3 5-5.38 6.6C20.62 29 18 26.5 18 24z"
+                    fill="#E91E8C"
+                />
+            </svg>
+        ),
     },
     {
-        icon: <CalendarMonthIcon fontSize="inherit" />,
-        title: "Unmatched Convenience",
-        desc: "Experience the ultimate convenience with SafeRoute AI. All our drivers undergo strict background checks and we offer services tailored to modern women on the move.",
-        bg: "https://img.freepik.com/free-photo/businesswoman-car_23-2148002180.jpg?w=1060"
+        title: "Women Drivers Only",
+        desc: "All drivers are verified women, empowering and safe for everyone.",
+        icon: (
+            // Woman silhouette
+            <svg className="w-10 h-10" viewBox="0 0 48 48" fill="none">
+                <circle cx="24" cy="14" r="7" stroke="#E91E8C" strokeWidth="2.5" fill="#FFF0F5" />
+                <path
+                    d="M10 38c0-7.73 6.27-14 14-14s14 6.27 14 14"
+                    stroke="#E91E8C" strokeWidth="2.5" strokeLinecap="round" fill="none"
+                />
+                <circle cx="24" cy="38" r="3" fill="#E91E8C" />
+                <line x1="24" y1="35" x2="24" y2="31" stroke="#E91E8C" strokeWidth="2.5" strokeLinecap="round" />
+            </svg>
+        ),
     },
     {
-        icon: <SupportIcon fontSize="inherit" />,
-        title: "Dedicated Assistance",
-        desc: "We are committed to providing exceptional customer support. Our dedicated team is available round-the-clock to assist you with any queries or concerns.",
-        bg: "https://img.freepik.com/free-photo/portrait-woman-customer-service-worker_144627-37948.jpg?w=996"
-    }
+        title: "Verified Profiles",
+        desc: "Rigorous background checks and profile verification for all users.",
+        icon: (
+            // Clipboard with check
+            <svg className="w-10 h-10" viewBox="0 0 48 48" fill="none">
+                <rect x="10" y="8" width="28" height="34" rx="3" stroke="#E91E8C" strokeWidth="2.5" fill="#FFF0F5" />
+                <path d="M18 8v-2a2 2 0 014 0v2" stroke="#E91E8C" strokeWidth="2" />
+                <path d="M26 8v-2a2 2 0 014 0v2" stroke="#E91E8C" strokeWidth="2" />
+                <path d="M16 26l4 4 8-8" stroke="#E91E8C" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+        ),
+    },
 ];
 
 const WhySafely = () => {
     return (
-        <div className="container mx-auto px-6 pb-7">
-            <h1 className="text-4xl font-bold text-blue-800">Why SafeRoute AI?</h1>
-            <div className="container w-full h-fit md:flex md:justify-between grid grid-rows-1 gap-5 py-10">
-                {cards.map((card, index) => (
-                    <div key={index} className="mx-auto">
+        <section className="w-full py-16 px-6" style={{ backgroundColor: "#FAF7F0" }}>
+            <div className="max-w-5xl mx-auto">
+                {/* Section heading */}
+                <h2 className="text-3xl font-bold mb-10" style={{ color: "#2D1470" }}>
+                    Why Safely
+                </h2>
+
+                {/* Cards grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {cards.map((card, i) => (
                         <div
-                            className="relative h-60 w-full max-w-xs rounded-xl overflow-hidden text-center flex flex-col justify-end"
-                            style={{ backgroundImage: `url('${card.bg}')`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+                            key={i}
+                            className="bg-white rounded-2xl p-6 shadow-[0_4px_20px_rgba(233,30,140,0.08)] border border-[#F8D7E8]/60
+                                hover:shadow-[0_8px_32px_rgba(233,30,140,0.14)] hover:-translate-y-0.5 transition-all duration-200"
                         >
-                            <div className="absolute inset-0 bg-black opacity-50" />
-                            <div className="relative z-10 p-6">
-                                <div className="text-5xl mb-2 text-white">
-                                    {card.icon}
-                                </div>
-                                <h4 className="mb-2 font-bold text-yellow-400 text-lg">{card.title}</h4>
-                                <p className="mb-4 text-gray-300 text-sm">{card.desc}</p>
+                            {/* Icon */}
+                            <div className="mb-4">
+                                {card.icon}
                             </div>
+                            {/* Title */}
+                            <h3 className="text-base font-bold mb-2" style={{ color: "#2D1470" }}>
+                                {card.title}
+                            </h3>
+                            {/* Description */}
+                            <p className="text-sm leading-relaxed" style={{ color: "#6B5B7B" }}>
+                                {card.desc}
+                            </p>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
-        </div>
+        </section>
     );
 };
 

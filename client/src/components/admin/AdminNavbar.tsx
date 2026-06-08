@@ -3,32 +3,59 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { adminLogout } from "../../services/redux/slices/adminAuthSlice";
 
+// Same export name, same function name, same logic — only styling changed
 export function AdminNavbar() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [openNav, setOpenNav] = React.useState(false);
 
+    const navLinks = [
+        { label: "Dashboard", path: "/admin/dashboard" },
+        { label: "Drivers",   path: "/admin/drivers"   },
+        { label: "Users",     path: "/admin/users"     },
+        { label: "Safety",    path: "/admin/safety"    },
+    ];
+
+    const currentPath = window.location.pathname;
+
     return (
-        <nav className="bg-indigo-600 px-4 py-3">
-            <div className="max-w-screen-xl mx-auto flex items-center justify-between text-white">
+        <nav style={{ backgroundColor: "#2D1470" }} className="w-full px-6 py-3 shadow-sm">
+            <div className="max-w-screen-xl mx-auto flex items-center justify-between">
+
+                {/* Logo */}
                 <span
-                    className="font-semibold text-lg cursor-pointer"
+                    className="text-xl font-bold text-white cursor-pointer tracking-tight select-none"
                     onClick={() => navigate("/admin/dashboard")}
                 >
-                    SafeRoute AI — Admin
+                    Safely
+                    <span className="ml-2 text-xs font-normal opacity-60">Admin</span>
                 </span>
 
                 {/* Desktop nav */}
-                <ul className="hidden lg:flex gap-6 text-sm font-medium">
-                    <li className="cursor-pointer hover:text-yellow-300" onClick={() => navigate("/admin/dashboard")}>Dashboard</li>
-                    <li className="cursor-pointer hover:text-yellow-300" onClick={() => navigate("/admin/drivers")}>Drivers</li>
-                    <li className="cursor-pointer hover:text-yellow-300" onClick={() => navigate("/admin/users")}>Users</li>
-                    <li className="cursor-pointer hover:text-yellow-300" onClick={() => navigate("/admin/safety")}>Safety</li>
+                <ul className="hidden lg:flex items-center gap-1">
+                    {navLinks.map((link) => {
+                        const isActive = currentPath === link.path || currentPath.startsWith(link.path + "/");
+                        return (
+                            <li key={link.path}>
+                                <button
+                                    onClick={() => navigate(link.path)}
+                                    className={`relative px-4 py-2 text-sm font-medium text-white rounded-lg transition-all
+                                        ${isActive ? "bg-white/15" : "opacity-70 hover:opacity-100 hover:bg-white/10"}`}
+                                >
+                                    {link.label}
+                                    {isActive && (
+                                        <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-[#E91E8C] rounded-full" />
+                                    )}
+                                </button>
+                            </li>
+                        );
+                    })}
                 </ul>
 
+                {/* Log out button */}
                 <button
                     onClick={() => dispatch(adminLogout())}
-                    className="hidden lg:block bg-white text-indigo-600 text-sm font-semibold px-4 py-1.5 rounded hover:bg-yellow-300 hover:text-black transition"
+                    className="hidden lg:block border border-white/60 text-white text-sm font-semibold px-5 py-1.5 rounded-xl hover:bg-white hover:text-[#2D1470] transition-colors"
                 >
                     Log Out
                 </button>
@@ -49,13 +76,19 @@ export function AdminNavbar() {
 
             {/* Mobile menu */}
             {openNav && (
-                <div className="lg:hidden mt-2 flex flex-col gap-3 text-white text-sm px-2 pb-3">
-                    <p className="cursor-pointer hover:text-yellow-300" onClick={() => navigate("/admin/dashboard")}>Dashboard</p>
-                    <p className="cursor-pointer hover:text-yellow-300" onClick={() => navigate("/admin/drivers")}>Drivers</p>
-                    <p className="cursor-pointer hover:text-yellow-300" onClick={() => navigate("/admin/users")}>Users</p>
+                <div className="lg:hidden mt-3 flex flex-col gap-1 px-2 pb-3">
+                    {navLinks.map((link) => (
+                        <p
+                            key={link.path}
+                            className="cursor-pointer text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 text-sm font-medium transition-colors"
+                            onClick={() => { navigate(link.path); setOpenNav(false); }}
+                        >
+                            {link.label}
+                        </p>
+                    ))}
                     <button
                         onClick={() => dispatch(adminLogout())}
-                        className="bg-white text-indigo-600 font-semibold px-4 py-1.5 rounded w-full"
+                        className="mt-2 border border-white/60 text-white font-semibold px-4 py-2 rounded-xl w-full text-sm hover:bg-white hover:text-[#2D1470] transition-colors"
                     >
                         Log Out
                     </button>
